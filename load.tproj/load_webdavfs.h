@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2000-2006 Apple Computer, Inc. All rights reserved.
+ * Copyright (c) 2006-2008 Apple Inc. All rights reserved.
  *
  * @APPLE_LICENSE_HEADER_START@
  * 
@@ -20,21 +20,16 @@
  * 
  * @APPLE_LICENSE_HEADER_END@
  */
+#ifndef _LOAD_WEBDAVFS_H_
+#define _LOAD_WEBDAVFS_H_
 
-#ifndef __WEBDAV_UTILS__
-#define __WEBDAV_UTILS__
+#define WEBDAVFS_LOAD_KEXT_BOOTSTRAP_NAME "com.apple.webdavfs_load_kext"
+#define	WEBDAVFS_VFSNAME "webdavfs"
 
-#include "webdav.h"
+typedef char *string_t;
 
-enum webdavlocktype  {WEBDAV_SHARED_LOCK = 1, WEBDAV_EXCLUSIVE_LOCK = 2};
-
-/* single */
-int webdav_lock(struct webdavnode *pt, enum webdavlocktype locktype);
-void webdav_unlock(struct webdavnode *pt);
-
-// convert standard timespec to webdav_timespec_64
-void timespec_to_webdav_timespec64(struct timespec ts, struct webdav_timespec64 *wts);
-// convert webdav_timespec64 to standard timespec
-void webdav_timespec64_to_timespec(struct webdav_timespec64 wts, struct timespec *ts);
+#define KEXT_LOAD_PATH "/sbin/kextload"
+#define WEBDAV_KEXT_PATH "/System/Library/Extensions/webdav_fs.kext"
+#define LOAD_WEBDAVKEXT_PATH "/System/Library/Extensions/smbfs.kext/Contents/Resources/load_webdav"
 
 #endif
